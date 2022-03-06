@@ -10,8 +10,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 </parent>
 <artifactId>spring</artifactId>
 <packaging>pom</packaging>
-<name>Spring Boot Dependencies</name>
-<description>Spring Boot Dependencies</description>
+<description>这个pom完全是从org.springframework.boot:spring-boot-starter-parent:2.1.4.RELEASE中copy出来的</description>
 <url>https://projects.spring.io/spring-boot/#</url>
 <licenses>
     <license>
