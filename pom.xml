@@ -17,6 +17,9 @@
         <module>spring</module>
         <module>spring/simple-starter</module>
         <module>elasticSearch/transport</module>
+        <module>rocketmq</module>
+        <module>network</module>
+        <module>algorithm</module>
     </modules>
 
 
