@@ -2,7 +2,7 @@ package com.czc.example.algorithm.sorting;
 
 /**
  * @author 金陵笑笑生
- * @description: TODO
+ * @description: 插入法排序
  * @date 2022/3/21下午10:31
  */
 public class InsertionSort {

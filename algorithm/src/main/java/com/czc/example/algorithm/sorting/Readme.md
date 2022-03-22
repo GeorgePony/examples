@@ -60,3 +60,52 @@ public class InsertionSort {
 ```
 
 在数组近乎于有序的情况下，插入法排序效率甚至会优于O(log(n))的排序算法。
+
+## 2、 O(n*log(n))的排序算法
+
+### 2.1、 归并法排序
+
+![](../imgs/mergeSort.png)
+
+```java
+
+public class MergeSort {
+    void merge(int[] arr, int left, int mid, int right) {
+        int[] temp = new int[right - left + 1];
+        for (int i = left; i <= right; i++) {
+            temp[i - left] = arr[i];
+        }
+        int i = left;
+        int j = mid + 1;
+        for (int k = left; k <= right; k++) {
+            if (i > mid) {
+                arr[k] = temp[j - left];
+                j++;
+            } else if (j > right) {
+                arr[k] = temp[i - left];
+                i++;
+            } else if (temp[i - left] < temp[j - left]) {
+                arr[k] = temp[i - left];
+                i++;
+            } else {
+                arr[k] = temp[j - left];
+                j++;
+            }
+        }
+    }
+
+    void mergeSort(int[] arr, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+        int mid = (left + right) / 2;
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+        merge(arr, left, mid, right);
+    }
+
+    void mergeSort(int[] arr) {
+        mergeSort(arr, 0, arr.length - 1);
+    }
+}
+```
