@@ -1,13 +1,15 @@
 package com.czc.example.algorithm.sorting;
 
+import java.util.Random;
+
 /**
  * @author 金陵笑笑生
  * @description: 插入法排序
  * @date 2022/3/21下午10:31
  */
 public class InsertionSort {
-    void insertionSort(int[] arr){
-        for(int i = 1 ; i < arr.length ; i ++){
+    void insertionSort(int[] arr,int l, int r){
+        for(int i = l + 1 ; i <= r ; i ++){
             int idx = -1 ;
             for(int j = 0 ; j <= i - 1 ; j ++){
                 if(arr[j] > arr[i]){
@@ -23,14 +25,21 @@ public class InsertionSort {
                 arr[idx] = temp;
             }
         }
-        for(int i = 0 ; i < arr.length ; i ++ ){
-            System.out.print(String.format("%d ",arr[i]));
-        }
     }
 
     public static void main(String[] args) {
-        int[] arr = {9,2,4,6,12,3,7,2,56,7};
-        new InsertionSort().insertionSort(arr);
 
+        int size = 1000;
+        int[] arr = new int[size];
+        Random r = new Random();
+        for(int i = 0 ;i < size ; i ++){
+            arr[i] = r.nextInt(size);
+        }
+
+        new InsertionSort().insertionSort(arr,0, arr.length - 1);
+
+        for(int i = 0 ; i < arr.length ; i ++ ){
+            System.out.print(String.format("%d ",arr[i]));
+        }
     }
 }

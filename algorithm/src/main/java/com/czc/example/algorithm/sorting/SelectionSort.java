@@ -17,9 +17,7 @@ public class SelectionSort {
                     minIndex = j;
                 }
             }
-            int temp = arr[minIndex];
-            arr[minIndex] = arr[i];
-            arr[i] = temp;
+            SortUtil.swap(arr,minIndex,i);
         }
         for(int i = 0 ; i < n ; i ++ ){
             System.out.print(String.format("%d ",arr[i]));

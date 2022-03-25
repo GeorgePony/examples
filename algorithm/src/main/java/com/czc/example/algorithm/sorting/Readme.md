@@ -109,3 +109,126 @@ public class MergeSort {
     }
 }
 ```
+
+### 2.2、 快速法排序
+
+#### 2.2.1、 简单描述
+
+核心思想:将一个数字v整理到正确的位置:1. 其左边的数字都是比v小的 ;2.其右边的数字都是比v大的。
+
+![](../imgs/QuickSortMainConcept.png)
+
+可分为如下三个步骤:
+
+1. 以第一个元素为v,逐步切割整个数组
+
+![](../imgs/QuickSortStep1.png)
+
+2. 整个数组切分完毕后，将v放在数组中间
+
+![](../imgs/QuickSortStep2.png)
+
+3. 将 **<v** 和 **>v** 这两部分的子数组递归进行快速法排序
+
+#### 2.2.2、随机化改良
+
+当整个数组近乎有序的情况下，以首元素为v，将会出现 **<v** 和 **>v** 这两个子数组不平衡的情况,这样算法会退步为 **O(n*n)** 的复杂度。解决方案:随机选择一个元素作为v。
+
+![](../imgs/QuickSortRandomSelection.png)
+
+代码如下:
+
+```java
+public class QuickSort1 {
+    /**
+     * 对于arr[l...r]部分进行partition操作
+     * @param arr
+     * @param l
+     * @param r
+     * @return 返回p,使得arr[l...p-1] < arr[p] ;arr[p+1,r] > arr[p]
+     */
+    int partition(int[] arr,int l, int r){
+        SortUtil.swap(arr ,l , l +new Random().nextInt(r - l) );
+        int v = arr[l];
+        int j = l;
+        for(int i = l + 1; i <= r ; i ++){
+            if(arr[i] < v){
+                SortUtil.swap(arr,j+1,i);
+                j = j + 1;
+            }
+        }
+        SortUtil.swap(arr,l,j);
+        return j;
+    }
+    void quickSort(int[] arr,int l,int r){
+        /**
+         * 高级的排序算法在最小处都可以用插入法排序优化
+         */
+        if(r - l <= 15){
+            new InsertionSort().insertionSort(arr ,l,r);
+            return;
+        }
+        int p = partition(arr,l,r);
+        quickSort(arr,l ,p-1);
+        quickSort(arr,p+1 , r);
+    }
+}
+```
+
+#### 2.2.3、 双路快速法排序
+
+当数组中存在大量重复元素的情况下，也会发生不平衡的状况。 双路快速排序排序会将和v相同的元素均匀分布在两条路径中。
+
+![](../imgs/QuickSortTwoRoads.png)
+
+代码如下:
+
+```java
+
+public class QuickSort2 {
+
+    /**
+     * 对于arr[l...r]部分进行partition操作
+     * @param arr
+     * @param l
+     * @param r
+     * @return 返回p,使得arr[l...p-1] < arr[p] ;arr[p+1,r] > arr[p]
+     */
+    int partition(int[] arr,int l, int r){
+        SortUtil.swap(arr ,l , l +new Random().nextInt(r - l) );
+        int v = arr[l];
+
+        // arr[l+1 ... i) < v; arr(j ... r] >= v
+        int i = l + 1,j = r;
+        while (true){
+            while(i <= r && arr[i] < v){
+                i ++;
+            }
+            while( j >= l + 1&& arr[j] > v){
+                j --;
+            }
+            if( i > j){
+                break;
+            }
+            SortUtil.swap(arr,i,j);
+            i ++;
+            j --;
+        }
+
+        SortUtil.swap(arr,l,j);
+        return j;
+    }
+    void quickSort(int[] arr,int l,int r){
+        /**
+         * 高级的排序算法在最小处都可以用插入法排序优化
+         */
+        if(r - l <= 15){
+            new InsertionSort().insertionSort(arr ,l,r);
+            return;
+        }
+        int p = partition(arr,l,r);
+        quickSort(arr,l ,p-1);
+        quickSort(arr,p+1 , r);
+    }
+}
+```
