@@ -4,7 +4,7 @@
 
 ### 1.1、选择法排序
 
-![](../imgs/SelectionSort.png)
+![](../imgs/sort/SelectionSort.png)
 
 ```java
 public class SelectionSort {
@@ -31,7 +31,7 @@ public class SelectionSort {
 
 ### 1.2、插入法排序
 
-![](../imgs/InsertionSort.png)
+![](../imgs/sort/InsertionSort.png)
 
 ```java
 public class InsertionSort {
@@ -65,7 +65,7 @@ public class InsertionSort {
 
 ### 2.1、 归并法排序
 
-![](../imgs/mergeSort.png)
+![](../imgs/sort/mergeSort.png)
 
 ```java
 
@@ -116,17 +116,17 @@ public class MergeSort {
 
 核心思想:将一个数字v整理到正确的位置:1. 其左边的数字都是比v小的 ;2.其右边的数字都是比v大的。
 
-![](../imgs/QuickSortMainConcept.png)
+![](../imgs/sort/QuickSortMainConcept.png)
 
 可分为如下三个步骤:
 
 1. 以第一个元素为v,逐步切割整个数组
 
-![](../imgs/QuickSortStep1.png)
+![](../imgs/sort/QuickSortStep1.png)
 
 2. 整个数组切分完毕后，将v放在数组中间
 
-![](../imgs/QuickSortStep2.png)
+![](../imgs/sort/QuickSortStep2.png)
 
 3. 将 **<v** 和 **>v** 这两部分的子数组递归进行快速法排序
 
@@ -134,7 +134,7 @@ public class MergeSort {
 
 当整个数组近乎有序的情况下，以首元素为v，将会出现 **<v** 和 **>v** 这两个子数组不平衡的情况,这样算法会退步为 **O(n*n)** 的复杂度。解决方案:随机选择一个元素作为v。
 
-![](../imgs/QuickSortRandomSelection.png)
+![](../imgs/sort/QuickSortRandomSelection.png)
 
 代码如下:
 
@@ -175,11 +175,11 @@ public class QuickSort1 {
 }
 ```
 
-#### 2.2.3、 双路快速法排序
+#### 2.2.3、 双路快速法排序改良
 
 当数组中存在大量重复元素的情况下，也会发生不平衡的状况。 双路快速排序排序会将和v相同的元素均匀分布在两条路径中。
 
-![](../imgs/QuickSortTwoRoads.png)
+![](../imgs/sort/QuickSortTwoRoads.png)
 
 代码如下:
 
@@ -232,3 +232,9 @@ public class QuickSort2 {
     }
 }
 ```
+
+#### 2.2.4、 三路快速排序法改良
+
+在二路快速排序法的基础上，增加 **==v** 的区域
+
+![](../imgs/sort/QuickSortThreeRoads.png)
