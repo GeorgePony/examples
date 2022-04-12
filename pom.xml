@@ -20,6 +20,8 @@
         <module>rocketmq</module>
         <module>network</module>
         <module>algorithm</module>
+        <module>spring/drools</module>
+        <module>flink</module>
     </modules>
 
 
