@@ -11,8 +11,11 @@
 * (Concurrent)java多线程
 * (Curator)Apache Curator
 * Disruptor
-* Elastic Search
+* Drools
+* Elasticsearch
+* Flink
 * (Network)计算机网络基础知识
 * RocketMq
+* Scala
 * (Shiro)Apache Shiro
 * Spring Boot
