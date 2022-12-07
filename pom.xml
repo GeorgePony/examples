@@ -25,6 +25,7 @@
         <module>scala</module>
         <module>activiti</module>
         <module>hadoop</module>
+        <module>spring/security</module>
     </modules>
 
 
